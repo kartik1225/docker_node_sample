@@ -2,14 +2,8 @@ version: "3.9"
 services:
   node-app:
     build: .
-#    ports:
-#      - "1000:${PORT}"
-    deploy:
-      replicas: 6
-      restart_policy:
-        condition: any
-      rollback_config:
-        delay: 15s
+    #    ports:
+    #      - "1000:${PORT}"
     volumes:
       - ./:/app
       - /app/node_modules
@@ -17,6 +11,14 @@ services:
       - mongo
     env_file:
       - .env
+    deploy:
+      replicas: 6
+      restart_policy:
+        condition: any
+      update_config:
+        parallelism: 2
+        delay: 10s
+        order: stop-first
   app-mongo:
     image: mongo:5.0.6-focal
     restart: always
@@ -32,11 +34,11 @@ services:
     ports:
       - "80:80"
     volumes:
-      -  ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
       - node-app
     environment:
-#      - NGINX_HOST=foobar.com
+      #      - NGINX_HOST=foobar.com
       - NGINX_PORT=80
 volumes:
   mongo-db:
