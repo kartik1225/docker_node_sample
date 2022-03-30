@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Gitlab login
+    - name: Build the Docker image [gitlab]
+      run: |
+        docker login registry.gitlab.com -u kartik1225 -p ${{ci.GITLAB_TOKEN}}
+        docker-compose build node-app 
+        docker push registry.gitlab.com/kartik1225/docker_node_sample
