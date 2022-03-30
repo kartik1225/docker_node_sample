@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   node-app:
-    image: ghcr.io/kartik1225/docker_node_sample:master
+    image: registry.gitlab.com/kartik1225/docker_node_sample
     build: .
     #    ports:
     #      - "1000:${PORT}"
@@ -9,7 +9,7 @@ services:
       - ./:/app
       - /app/node_modules
     depends_on:
-      - mongo
+      - app-mongo
     env_file:
       - .env
 #    deploy:
