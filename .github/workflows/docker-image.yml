@@ -14,8 +14,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
-    - name: Gitlab login
     - name: Build the Docker image [gitlab]
       run: |
         docker login registry.gitlab.com -u kartik1225 -p ${{ci.GITLAB_TOKEN}}
