@@ -4,6 +4,12 @@ services:
     build: .
 #    ports:
 #      - "1000:${PORT}"
+    deploy:
+      replicas: 6
+      restart_policy:
+        condition: any
+      rollback_config:
+        delay: 15s
     volumes:
       - ./:/app
       - /app/node_modules
