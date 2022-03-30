@@ -16,6 +16,6 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image [gitlab]
       run: |
-        docker login registry.gitlab.com -u kartik1225 -p ${{ secrets.ci.GITLAB_TOKEN }}
+        docker login registry.gitlab.com -u kartik1225 -p ${{ secrets.GITLAB_TOKEN }}
         docker-compose build node-app 
         docker push registry.gitlab.com/kartik1225/docker_node_sample
