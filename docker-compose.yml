@@ -3,8 +3,8 @@ services:
   node-app:
     image: registry.gitlab.com/kartik1225/docker_node_sample
     build: .
-        ports:
-          - "3000:${PORT}"
+    ports:
+      - "3000:${PORT}"
     volumes:
       - ./:/app
       - /app/node_modules
