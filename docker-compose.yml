@@ -44,7 +44,7 @@ services:
       #      - NGINX_HOST=foobar.com
       - NGINX_PORT=80
   certbot:
-    image: certbot/certbot:latest
+    image: certbot/certbot:arm64v8-nightly
     volumes:
       - ./certbot/www/:/var/www/certbot/:rw
       - ./certbot/conf/:/etc/letsencrypt/:rw
