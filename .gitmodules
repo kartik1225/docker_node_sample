@@ -1,3 +1,0 @@
-[submodule "ssl"]
-	path = ssl
-	url = https://github.com/evgeniy-khist/letsencrypt-docker-compose.git
